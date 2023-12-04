@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <style>
+        body {
+            display: flex;
+            flex-direction: column;
+            height: 100vh;
+            margin: 0;
+            background-color: #E5DDD5;
+            font-family: 'Helvetica Neue', sans-serif;
+        }
+        .chat {
+            flex: 1;
+            padding: 10px 15px;
+            overflow: auto;
+            border-bottom: 1px solid #ddd;
+            background-color: #E5DDD5;
+        }
+        .message {
+            max-width: 60%;
+            margin-bottom: 10px;
+            padding: 10px;
+            border-radius: 10px;
+            clear: both;
+            line-height: 1.3;
+            font-size: 16px;
+        }
+        .received {
+            background-color: #ffffff;
+            float: left;
+        }
+        .sent {
+            background-color: #DCF8C6;
+            float: right;
+        }
+        .input-area {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            padding: 10px;
+            border-top: 1px solid #ddd;
+            background-color: #f0f0f0;
+        }
+        .input-area input {
+            flex: 1;
+            border: none;
+            padding: 10px;
+            border-radius: 20px;
+            outline: none;
+        }
+        .input-area button {
+            margin-left: 10px;
+            background-color: #075E54;
+            color: #ffffff;
+            border: none;
+            padding: 10px;
+            border-radius: 50%;
+            outline: none;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+    <div class="chat" id="chat">
+        <!-- Messages will be added here -->
+    </div>
+    <div class="input-area">
+        <input type="text" id="messageInput" placeholder="Type a message...">
+        <button onclick="sendMessage()">Enviar</button>
+    </div>
+    <script>
+        function sendMessage() {
+            var message = document.getElementById('messageInput').value;
+            if (message) {
+                var chat = document.getElementById('chat');
+                var newMessage = document.createElement('div');
+                newMessage.classList.add('message', 'sent');
+                newMessage.textContent = message;
+                chat.appendChild(newMessage);
+                document.getElementById('messageInput').value = '';
+            }
+        }
+    </script>
+</body>
+</html>
